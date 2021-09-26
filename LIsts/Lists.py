@@ -1,6 +1,3 @@
-#1
-
-from typing import Type
 
 
 li = [5,3,6,2]

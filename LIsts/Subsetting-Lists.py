@@ -15,5 +15,6 @@ print(my_age)
 
 my_parents_age = family_age[0:2]
 print(my_parents_age)
+#[['Santosh Kumar', 45], ['Pinki Kumari', 36]]
 
 

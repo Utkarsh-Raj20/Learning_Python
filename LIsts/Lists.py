@@ -1,5 +1,4 @@
-
-
+from typing import Type
 li = [5,3,6,2]
 
 li2 = ['hey', 5, 'yes', True]

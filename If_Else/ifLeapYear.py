@@ -5,5 +5,8 @@ def is_leap(year):
         leap = True
     return leap
 
-year = int(input())
-print(is_leap(year))
+year = int(input("year: "))
+if is_leap(year) == True:
+    print("This is a leap Year")
+else:
+    print("This is not a leap Year")

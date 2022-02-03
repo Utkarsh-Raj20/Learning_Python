@@ -1,6 +1,8 @@
 import random
 import math
 
+from numpy import integer
+
 lower = int(input("input lower bound:"))
 upper = int(input("input upper bound:"))
 

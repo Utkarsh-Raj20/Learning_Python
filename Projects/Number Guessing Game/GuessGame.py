@@ -22,5 +22,5 @@ while count <= tries:
         print("Try Again, You guessed too small!")
         guess = int(input("Guess a number:"))
 if count > tries:
-    print("The number was ", integer)
+    print("The number was ", number)
     print("Better luck nexy time")

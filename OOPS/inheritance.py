@@ -32,6 +32,9 @@ class Cat(Pet):
             f"Hello, i am {self.name} and i am {self.age} years old and i am of {self.color} color"
         )
 
+    def meow(self):
+        print("Meow")
+
 
 p = Pet("bill", 12)
 p.speak()
@@ -44,4 +47,5 @@ d.how_many_legs()
 
 c = Cat("sily", 5, "white")
 c.speak()
+c.meow()
 c.how_many_legs()

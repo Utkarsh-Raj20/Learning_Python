@@ -3,7 +3,7 @@ class Pet:
         # Checking the passed values
         assert age >= 0, f"the {age} is not valid"
 
-        # Assigning the values to the pet
+        #* Assigning the values to the pet
         self.name = name
         self.age = age
 

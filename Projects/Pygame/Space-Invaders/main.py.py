@@ -1,5 +1,6 @@
 import pygame
 import random
+import math
 
 #!initialise pygame
 pygame.init()
@@ -24,6 +25,7 @@ player_img = pygame.image.load(
 playerX = 370
 playerY = 480
 playerX_change = 0
+score = 0
 
 # *enemy
 enemy_img = pygame.image.load("Python/Projects/Pygame/Space-Invaders/assets/enemy.png")
@@ -54,6 +56,16 @@ def fire_bullet(x, y):
     global bullet_state
     screen.blit(bullet_img, (x + 16, y + 10))
     bullet_state = "fire"
+
+
+def isCollision(enemyX, enemyY, bulletY, bulletX):
+    distance = math.sqrt(
+        (math.pow(enemyX - bulletX, 2)) + (math.pow(enemyY - bulletY, 2))
+    )
+    if distance < 25:
+        return True
+    else:
+        return False
 
 
 # *screen on loop
@@ -107,6 +119,16 @@ while running:
     if bulletY <= -15:
         bulletY = 480
         bullet_state = "ready"
+
+    # *Collision check
+    collision = isCollision(enemyX, enemyY, bulletY, bulletX)
+    if collision:
+        bulletY = 480
+        bullet_state = "ready"
+        enemyX = random.randint(0, 736)
+        enemyY = random.randint(30, 100)
+        score += 1
+        print(score)
 
     player(playerX, playerY)
     enemy(enemyX, enemyY)

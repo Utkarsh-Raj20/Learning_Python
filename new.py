@@ -1,14 +1,10 @@
-class Solution:
-    def print2largest(self, arr, n):
-        for x in range(-1, -n - 1, -1):
-            print(arr[x], end=" ")
+max_score =[0]
+n = len(max_score)
+if max_score[-1] !=None:
+    print("maximum score is : ",max_score[-1])
 
+score = int(input("whats your score? "))
 
-if __name__ == "__main__":
-    tc = int(input())
-    while tc > 0:
-        n = int(input())
-        arr = list(map(int, input().strip().split()))
-        ob = Solution()
-        ob.print2largest(arr, n)
-        tc -= 1
+if score > max_score[-1]:
+    max_score.append(score)
+    print(f"now {score} is the new max score")

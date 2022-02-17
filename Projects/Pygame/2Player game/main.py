@@ -23,7 +23,6 @@ BULLET_HIT_SOUND = pygame.mixer.Sound(
     "Python/Projects/Pygame/2Player game/assets/Grenade+1.mp3"
 )
 
-
 FONT = pygame.font.SysFont("comicsans", 40)
 WINNER_FONT = pygame.font.SysFont("comicsans", 100)
 
@@ -118,8 +117,8 @@ def draw_winner(text):
 
 
 def main():
-    red = pygame.Rect(700, 300, 55, 40)
-    yellow = pygame.Rect(100, 300, 55, 40)
+    red = pygame.Rect(700, 250, 55, 40)
+    yellow = pygame.Rect(100, 250, 55, 40)
 
     yellow_bullets = []
     red_bullets = []

@@ -23,10 +23,11 @@ class Items:
 
 
 dog = Animals("Bruno", 3, "Black")
+dog.name = "Arjun"
+
 cat = Animals("Meow", 2, "White")
 
 phone = Items("Phone", 2, 15000)
 laptop = Items("Laptop", 1, 70000)
 
-print(phone.calculate_price())
-print(laptop.calculate_price())
+print(dog.name)

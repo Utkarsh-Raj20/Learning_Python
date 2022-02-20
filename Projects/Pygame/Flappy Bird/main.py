@@ -145,8 +145,6 @@ def main():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     run = False
-                    pygame.quit()
-                    break
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         show_menu = False
@@ -208,7 +206,7 @@ def main():
             handle_collision(bird, pipe1, pipe2, pipe3)
             draw_window(base_x, bird, n, BIRD_MOVEMENT, pipe1, pipe2, pipe3, score)
             pygame.display.update()
-    main()
+    pygame.display.quit()
 
 
 if __name__ == "__main__":

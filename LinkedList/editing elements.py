@@ -1,3 +1,7 @@
+from tkinter import N
+from tkinter.messagebox import NO
+
+
 class Node:
     def __init__(self, data=None) -> None:
         self.data = data
@@ -26,6 +30,7 @@ class LinkedList:
             last = last.next
         last.next = new_node
 
+    # *Inserting after specific node
     def insertAfter(self, prev_data, new_data):
         new_node = Node(new_data)
         prev_node = self.head
@@ -39,6 +44,27 @@ class LinkedList:
             return
         new_node.next = prev_node.next
         prev_node.next = new_node
+
+    def deleteNode(self, key):
+        temp = self.head
+
+        if temp is not None:
+            if temp.data == key:
+                self.head = temp.next
+                temp = None
+                return
+
+        while temp is not None:
+            if temp.data == key:
+                break
+            prev = temp
+            temp = temp.next
+
+        if temp == None:
+            return
+
+        prev.next = temp.next
+        temp = None
 
     # *Printing the Linked List
     def printList(self):
@@ -59,5 +85,6 @@ if __name__ == "__main__":
     l1.append(5)
 
     l1.insertAfter(3, 4)
+    l1.deleteNode(1)
 
     l1.printList()

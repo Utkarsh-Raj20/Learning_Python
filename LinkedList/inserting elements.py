@@ -1,3 +1,6 @@
+from tkinter import N
+
+
 class Node:
     def __init__(self, data=None) -> None:
         self.data = data
@@ -26,6 +29,11 @@ class LinkedList:
             last = last.next
         last.next = new_node
 
+    def insertAfter(self, prev_node, new_data):
+        new_node = Node(new_data)
+        new_node.next = prev_node.next
+        prev_node.next = new_node
+
     # *Printing the Linked List
     def printList(self):
         temp = self.head
@@ -42,5 +50,8 @@ if __name__ == "__main__":
     l1.push(1)
     l1.append(2)
     l1.append(3)
+    l1.append(5)
+
+    l1.insertAfter(l1.head.next.next, 4)
 
     l1.printList()

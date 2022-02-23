@@ -1,6 +1,3 @@
-from tkinter import N
-
-
 class Node:
     def __init__(self, data=None) -> None:
         self.data = data
@@ -29,8 +26,17 @@ class LinkedList:
             last = last.next
         last.next = new_node
 
-    def insertAfter(self, prev_node, new_data):
+    def insertAfter(self, prev_data, new_data):
         new_node = Node(new_data)
+        prev_node = self.head
+        while prev_node:
+            if prev_node.data == prev_data:
+                break
+            else:
+                prev_node = prev_node.next
+        if prev_node is None:
+            print(f"{prev_data} does not present in the linked list")
+            return
         new_node.next = prev_node.next
         prev_node.next = new_node
 
@@ -38,7 +44,7 @@ class LinkedList:
     def printList(self):
         temp = self.head
         while temp:
-            print(temp.data, end="--> ")
+            print(temp.data, end=" --> ")
             temp = temp.next
         if temp == None:
             print("None")
@@ -52,6 +58,6 @@ if __name__ == "__main__":
     l1.append(3)
     l1.append(5)
 
-    l1.insertAfter(l1.head.next.next, 4)
+    l1.insertAfter(3, 4)
 
     l1.printList()

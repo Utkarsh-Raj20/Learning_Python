@@ -1,7 +1,3 @@
-from tkinter import N
-from tkinter.messagebox import NO
-
-
 class Node:
     def __init__(self, data=None) -> None:
         self.data = data
@@ -45,6 +41,7 @@ class LinkedList:
         new_node.next = prev_node.next
         prev_node.next = new_node
 
+    # * Deleting a specific node
     def deleteNode(self, key):
         temp = self.head
 
@@ -66,6 +63,30 @@ class LinkedList:
         prev.next = temp.next
         temp = None
 
+    # *Deleting at specific position
+    def deleteNodeAt(self, position):
+        if self.head is None:
+            return
+
+        if position == 0:
+            temp = self.head
+            self.head = temp.next
+            return
+
+        current = self.head
+        index = 0
+        while current:
+            prev = current
+            current = current.next
+            index += 1
+
+            if index == position:
+                if current is not None:
+                    prev.next = current.next
+                    current.next = None
+                    return
+        print("Index exceeds the sixe of the linked list")
+
     # *Printing the Linked List
     def printList(self):
         temp = self.head
@@ -85,6 +106,6 @@ if __name__ == "__main__":
     l1.append(5)
 
     l1.insertAfter(3, 4)
-    l1.deleteNode(1)
+    l1.deleteNodeAt(2)
 
     l1.printList()

@@ -1,10 +1,22 @@
-max_score =[0]
-n = len(max_score)
-if max_score[-1] !=None:
-    print("maximum score is : ",max_score[-1])
+def minion_game(s):
 
-score = int(input("whats your score? "))
+    vowels = 'AEIOU'
 
-if score > max_score[-1]:
-    max_score.append(score)
-    print(f"now {score} is the new max score")
+    kevsc = 0
+    stusc = 0
+    for i in range(len(s)):
+        if s[i] in vowels:
+            kevsc += (len(s)-i)
+        else:
+            stusc += (len(s)-i)
+
+    if kevsc > stusc:
+        print ("Kevin", kevsc)
+    elif kevsc < stusc:
+        print ("Stuart", stusc)
+    else:
+        print ("Draw")
+
+if __name__ == '__main__':
+    s = input()
+    minion_game(s)

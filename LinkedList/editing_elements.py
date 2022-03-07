@@ -1,12 +1,27 @@
 class Node:
-    def __init__(self, data=None) -> None:
+    def __init__(self, data=None):
         self.data = data
         self.next = None
 
 
 class LinkedList:
-    def __init__(self) -> None:
-        self.head = None
+    def __init__(self, list=None):
+        self.values = list
+        self.head = self.createList()
+
+    # *creating list from given list
+    def createList(self):
+        if self.values == None:
+            self.head = None
+        else:
+            self.head = Node(self.values[0])
+            tail = self.head
+            for x in range(1, len(self.values)):
+                newNode = Node(self.values[x])
+                while tail.next:
+                    tail = tail.next
+                tail.next = newNode
+            return self.head
 
     # *Inserting element at start of Linked List
     def push(self, new_data):
@@ -18,13 +33,14 @@ class LinkedList:
     def append(self, new_data):
         new_node = Node(new_data)
 
-        if self.head is None:
+        if self.head == None:
             self.head = new_node
 
-        last = self.head
-        while last.next:
-            last = last.next
-        last.next = new_node
+        else:
+            tail = self.head
+            while tail.next:
+                tail = tail.next
+            tail.next = new_node
 
     # *Inserting after specific node
     def insertAfter(self, prev_data, new_data):
@@ -41,7 +57,7 @@ class LinkedList:
         new_node.next = prev_node.next
         prev_node.next = new_node
 
-    # * Deleting a specific node
+    # *Deleting a specific node
     def deleteNode(self, key):
         temp = self.head
 
@@ -85,7 +101,7 @@ class LinkedList:
                     prev.next = current.next
                     current.next = None
                     return
-        print("Index exceeds the sixe of the linked list")
+        print("Index exceeds the size of the linked list")
 
     # *Printing the Linked List
     def printList(self):
@@ -93,19 +109,28 @@ class LinkedList:
         while temp:
             print(temp.data, end=" --> ")
             temp = temp.next
+            if temp == self.head:
+                print(f"{temp.data}(HEAD)")
+                break
         if temp == None:
             print("None")
+
+    # *Makes the linked list a circular Linked list
+    def circular(self):
+        tail = self.head
+        while tail.next:
+            tail = tail.next
+        tail.next = self.head
 
 
 if __name__ == "__main__":
 
-    l1 = LinkedList()
-    l1.push(1)
-    l1.append(2)
-    l1.append(3)
-    l1.append(5)
+    l1_list = [1, 2, 3, 4, 5, 6]
+    l1 = LinkedList(l1_list)
+    l1.circular()
 
-    l1.insertAfter(3, 4)
-    l1.deleteNodeAt(2)
+    l2 = LinkedList()
+    l2.append(1)
 
     l1.printList()
+    l2.printList()

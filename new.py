@@ -1,18 +1,9 @@
-from LinkedList import LinkedList
+def printDecreasing(n):
+    # write your code here
+    if n==0:
+        return
+    printDecreasing(n-1)
+    print(n)
 
-mon = [
-    "January",
-    "February",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-]
-months = LinkedList(mon)
-months.insertAfter("February", "March")
-months.printList()
+n = int(input())
+printDecreasing(n)

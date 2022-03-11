@@ -17,10 +17,7 @@ class LinkedList:
             self.head = Node(self.values[0])
             tail = self.head
             for x in range(1, len(self.values)):
-                newNode = Node(self.values[x])
-                while tail.next:
-                    tail = tail.next
-                tail.next = newNode
+                self.append(self.values[x])
             return self.head
 
     # *Inserting element at start of Linked List

@@ -1,7 +1,3 @@
-from tkinter import N
-from pygame import init
-
-
 class Node:
     def __init__(self, data):
         self.prev = None

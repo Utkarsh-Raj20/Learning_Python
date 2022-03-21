@@ -1,3 +1,4 @@
+import queue
 class Node:
     def __init__(self, data):
         self.prev = None
@@ -46,9 +47,52 @@ class DoublyLinkedList:
             new_node.prev = tail
             self.tail = new_node
 
-    # TODO insert a element at a specific position
-    # TODO delete a specific node
-    # TODO delete a node at a specific position
+    # * insert a element at a specific position
+    def insertAt(self, index, data):
+        new_node = Node(data)
+        if index == 0:
+            self.push(data)
+            return
+        count = 1
+        temp = self.head
+        while temp:
+            if count == index:
+                new_node.next = temp.next
+                new_node.prev = temp
+                temp.next.prev = new_node
+                temp.next = new_node
+            temp = temp.next
+            count += 1
+
+    # * delete a node at a specific position
+    def deleteAtIndex(self, index=None):
+        if index is None:
+            return
+        elif index == 0:
+            temp = self.head
+            self.head = self.head.next
+            self.head.prev = None
+            return temp
+        count = 0
+        temp = self.head
+        while temp:
+            if count == index:
+                temp.prev.next = temp.next
+                temp.next.prev = temp.prev
+                return temp
+            temp = temp.next
+            count += 1
+
+    # * delete a specific Node
+    def deleteNode(self, data):
+        temp = self.head
+        while temp:
+            if temp.data == data:
+                temp.prev.next = temp.next
+                temp.next.prev = temp.prev
+                return temp
+            temp = temp.next
+        print(f"'{data}' dose not exist in the linked list")
 
     # * make the list circular
     def circular(self):
@@ -78,13 +122,11 @@ if __name__ == "__main__":
     l1.append(2)
     l1.append(3)
     l1.push(1)
-    l1.printList()
+    # l1.printList()
 
     l2_list = [8, 6, 9, 5, 4, 7, 5, 2]
     l2 = DoublyLinkedList(l2_list)
+    l2.insertAt(2, 0)
+    l2.deleteNode(7)
     l2.circular()
     l2.printList()
-
-    l3 = DoublyLinkedList()
-    l3.push(8)
-    l3.printList()
